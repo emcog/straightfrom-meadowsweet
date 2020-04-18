@@ -27,7 +27,7 @@ const gulp = require('gulp'),
     tailwind = require('tailwindcss'),
     imagemin = require('gulp-imagemin');
         // imageminWebp = require('imagemin-webp'), // file type specific plugin, only use required type(s)
-        // imageminJpegtran = require('imagemin-jpegtran'), // file type specific plugin, only use required type(s)
+    // imageminJpegtran = require('imagemin-jpegtran'); // file type specific plugin, only use required type(s)
         // imageminPngquant = require('imagemin-pngquant'), // file type specific plugin, only use required type(s)
         // imageminGifSicle = require('imagemin-gifsicle'), // file type specific plugin, only use required type(s)
         // imageminOptiPng = require('imagemin-optipng'), // file type specific plugin, only use required type(s)
@@ -42,7 +42,7 @@ const paths = {
         build: "./dist",
 
         images: {
-          src: "./src/assets/images",
+          src: "./src/assets/images/**",
           dest: "./dist/assets/images",
         },
 };
@@ -105,6 +105,13 @@ function htmlBuild() {
 }
 
 
+function imgBuild() {
+    return gulp .src(`${paths.images.src}/*`)
+        .pipe(imagemin())
+        .pipe(gulp.dest(`${paths.images.dest}`));
+}
+
+
 
 
 //  --------> Production
@@ -149,6 +156,6 @@ function watch() {
 	
 exports.style = style;
 exports.watch = watch;
-exports.build = gulp.series(cleanup, style, gulp.parallel(javascriptBuild, htmlBuild, cssBuild));
-// exports.build = gulp.series(cleanup, style, gulp.parallel(javascriptBuild, cssBuild));
+// exports.build = gulp.series(cleanup, style, gulp.parallel(javascriptBuild, htmlBuild, cssBuild));
+exports.build = gulp.series(cleanup, style, gulp.parallel(javascriptBuild, htmlBuild, cssBuild, imgBuild));
 exports.serveBuild = serveBuild
