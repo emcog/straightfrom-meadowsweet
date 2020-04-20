@@ -1,0 +1,1 @@
+const radioButtons = document.querySelectorAll('input[type=text]');

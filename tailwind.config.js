@@ -1,5 +1,6 @@
 module.exports = {
-  theme: {
+    important: true,
+    theme: {
         height: {
             vh25: '25vh',
             vh50: '50vh',
@@ -8,12 +9,9 @@ module.exports = {
 
          // gutallBanner: '700px',
     }
-  }
+  },
+    variants: {
+        backgroundColor: ['responsive', 'hover', 'focus', 'active']
+    },
+    plugins: []
 }
-
-// Res
-//     extend: {},
-//   },
-//   variants: {},
-//   plugins: [],
-// }

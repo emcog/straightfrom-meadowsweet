@@ -98,7 +98,7 @@ function cssBuild() {
 
   
 function htmlBuild() {
-    return gulp 
+    return gulp
         .src(`${paths.source}/*.html`)
         .pipe(htmlmin())
         .pipe(gulp.dest(paths.build))
@@ -158,4 +158,5 @@ exports.style = style;
 exports.watch = watch;
 // exports.build = gulp.series(cleanup, style, gulp.parallel(javascriptBuild, htmlBuild, cssBuild));
 exports.build = gulp.series(cleanup, style, gulp.parallel(javascriptBuild, htmlBuild, cssBuild, imgBuild));
+// exports.build = gulp.series(cleanup, style, gulp.parallel(javascriptBuild, cssBuild, imgBuild));
 exports.serveBuild = serveBuild
