@@ -1,3 +1,5 @@
-// -----------------------------------------------------------------------------
-// This file contains all styles related to the button component.
-// -----------------------------------------------------------------------------
+.radio-buttons input[type="radio"]:checked + label {
+  background-color: #2d3748 !important;
+  border: #2d3748 8px solid;
+  color: white !important;
+}
